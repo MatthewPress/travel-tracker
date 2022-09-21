@@ -40,6 +40,8 @@ function setData(data) {
 // DOM ELEMENTS **************************************
 const tripsSection = document.querySelector('.trips-section');
 const yearlyExpenseDisplay = document.querySelector('.yearly-expense-display');
+const userNameDisplay = document.querySelector('.user-name-display');
+const userIdDisplay = document.querySelector('.user-id-display');
 
 // EVENT LISTENERS ***********************************
 
@@ -47,8 +49,10 @@ const yearlyExpenseDisplay = document.querySelector('.yearly-expense-display');
 
 // EVENT HANDLERS ************************************
 function displayUserInfo() {
+  userNameDisplay.innerText = user.name;
+  userIdDisplay.innerText = user.id;
+  
   tripsSection.innerHTML = "";
-
   user.trips.forEach(trip => {
     tripsSection.innerHTML += `
     <article>
