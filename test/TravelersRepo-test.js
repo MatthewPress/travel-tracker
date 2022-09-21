@@ -1,6 +1,7 @@
 import chai from 'chai';
 const expect = chai.expect;
 import travelersData from '../src/data/Travelers-data';
+import TravelersRepo from '../src/TravelersRepo';
 
 describe('TravelersRepo', () => {
 
@@ -11,7 +12,7 @@ describe('TravelersRepo', () => {
   let travelers;
 
   beforeEach(() => {
-    travelers = new Traveler(travelersData);
+    travelers = new TravelersRepo(travelersData);
   });
 
   it('should hold data for Travelers', () => {
