@@ -5,15 +5,13 @@ import Traveler from './Traveler';
 import Repository from './Repository';
 
 // GLOBAL DATA ***************************************
-let travelersRepo;
 let destinationsRepo;
 let tripsRepo;
 let user;
+let travelersRepo;
 let currentDate;
 
 // FETCH DATA ****************************************
-requestData(50);
-
 function requestData(id) {
   Promise.all([getData(`travelers/${id}`), getData('trips'), getData('destinations')])
     .then((data) => {
@@ -49,30 +47,58 @@ function setData(data) {
   tripsRepo = new Repository(data[1].trips);
   user = new Traveler(data[0]);
   user.setTrips(tripsRepo);
-  console.log("user", user);
+  console.log('user', user);
 
   displayUserInfo();
   populateLocationChoices();
 }
 
 // DOM ELEMENTS **************************************
-const tripsSection = document.querySelector('.trips-section');
-const yearlyExpenseDisplay = document.querySelector('.yearly-expense-display');
-const userNameDisplay = document.querySelector('.user-name-display');
-const userIdDisplay = document.querySelector('.user-id-display');
-const requestTripForm = document.forms[0];
+const loginSection = document.querySelector('.login-section');
+const loginForm = document.forms[0];
+const loginBtn = document.querySelector('.login-btn');
+
+const mainDisplay = document.querySelector('main');
+
+const requestTripForm = document.forms[1];
 const locationChoices = document.querySelector('.location-choices');
 const requestTripBtn = document.querySelector('.request-trip-btn');
 
+const tripsSection = document.querySelector('.user-trips-section');
+const yearlyExpenseDisplay = document.querySelector('.yearly-expense-display');
+const userNameDisplay = document.querySelector('.user-name-display');
+const userIdDisplay = document.querySelector('.user-id-display');
+
 // EVENT LISTENERS ***********************************
+loginBtn.addEventListener('click', login);
 requestTripBtn.addEventListener('click', requestTrip);
 
 // EVENT HANDLERS ************************************
+function login(event) {
+  event.preventDefault();
+
+  const loginData = new FormData(loginForm);
+  const loginCredentials = [...loginData.values()];
+  console.log(loginCredentials);
+
+  if (validateLogin(loginCredentials[1])) {
+    const loginID = parseInt(loginCredentials[0]);
+    requestData(loginID);
+    loginForm.reset();
+  } else {
+    alert('Nope');
+  }
+}
+
+function validateLogin(passwordAttempt) {
+  return passwordAttempt === 'travel';
+}
+
 function displayUserInfo() {
   userNameDisplay.innerText = user.name;
   userIdDisplay.innerText = user.id;
-  
-  tripsSection.innerHTML = "";
+
+  tripsSection.innerHTML = '';
   user.trips.forEach(trip => {
     tripsSection.innerHTML += `
     <article>
@@ -82,13 +108,18 @@ function displayUserInfo() {
       <p>Date: <span class="trip-date-display">${trip.date}</span></p>
     </article>
     `;
-  })
+  });
 
   yearlyExpenseDisplay.innerText = `$${user.calcYearExpenses(destinationsRepo, 2022)}`;
+ 
+  loginSection.classList.toggle('hidden');
+  mainDisplay.classList.toggle('hidden');
+
+  console.log('trips repo length', tripsRepo.length);
 }
 
 function populateLocationChoices() {
-  locationChoices.innerHTML = "";
+  locationChoices.innerHTML = '';
   destinationsRepo.data.forEach(location => {
     locationChoices.innerHTML += `
     <option value="${location.id}">${location.destination}</option>
@@ -99,20 +130,21 @@ function populateLocationChoices() {
 function requestTrip(event) {
   event.preventDefault();
   
-  const formData = new FormData(requestTripForm);
-  const values = [...formData.values()];
-
+  const requestedTrip = new FormData(requestTripForm);
+  const values = [...requestedTrip.values()];
+  
   const requestedTripData = {
-    id: 9999, // Make dynamic
+    id: tripsRepo.length,
     userID: user.id,
     destinationID: parseInt(values[2]),
     travelers: parseInt(values[1]),
     date: '2022/12/30', // Grab date selection
     duration: parseInt(values[0]),
-    status: "pending",
+    status: 'pending',
     suggestedActivities: []
   }
 
   postData('trips', requestedTripData);
-  // reset the form
+
+  requestTripForm.reset();
 }

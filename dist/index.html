@@ -1,38 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-US" dir="ltr">
   <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Travel Tracker</title>
   </head>
   <body>
     <!-- <img src="./images/turing-logo.png" alt="turing logo"> -->
-    
-    <form>
-      <label for="date-input">Date:</label>
-      <input type="date" id="date-input" required /><br />
-      <label for="duration-input">Duration:</label>
-      <input type="number" id="duration-input" name="duration-input" placeholder="0" min="0" required />
-      <label for="traveler-count-input">Number of Travelers:</label>
-      <input type="number" id="traveler-count-input" name="traveler-count-input" placeholder="0" min="0" required />
-      <label for="location-input">Destination:</label>
-      <select id="location-input" name="location-input" class="location-choices"></select>
-      <button type="submit" class="request-trip-btn">Submit</button>
-    </form>
-    
-    <p class="user-name-display"></p>
-    <p class="user-id-display"></p>
-
-    <section class="trips-section">
-      <article>
-        <p>Destination: <span class="trip-destination-display">NAME</span></p>
-        <p>Duration: <span class="trip-duration-display">DURATION</span> days</p>
-      </article>
+    <section class="login-section">
+      <form>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required />
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" />
+        <button type="submit" class="login-btn">Submit</button>
+      </form>
     </section>
-
-    <p class="yearly-expense-display"></p>
-
+    <main class="hidden">
+      <section>
+        <form>
+          <label for="date-input">Date:</label>
+          <input type="date" id="date-input" required /><br />
+          <label for="duration-input">Duration:</label>
+          <input type="number" id="duration-input" name="duration-input" placeholder="0" min="0" required />
+          <label for="traveler-count-input">Number of Travelers:</label>
+          <input type="number" id="traveler-count-input" name="traveler-count-input" placeholder="0" min="0" required />
+          <label for="location-input">Destination:</label>
+          <select id="location-input" name="location-input" class="location-choices"></select>
+          <button type="submit" class="request-trip-btn">Submit</button>
+        </form>
+      </section>
+      <section class="user-info-section">
+        <p class="user-name-display"></p>
+        <p class="user-id-display"></p>
+      </section>
+      <section class="user-trips-section">
+        <article>
+          <p>Destination: <span class="trip-destination-display">NAME</span></p>
+          <p>Duration: <span class="trip-duration-display">DURATION</span> days</p>
+        </article>
+        <p class="yearly-expense-display"></p>
+      </section>
+    </main>
     <script src="bundle.js"></script>
   </body>
 </html>
