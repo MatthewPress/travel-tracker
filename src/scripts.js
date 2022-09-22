@@ -1,45 +1,29 @@
+// Remove last two lines of code and uncomment window event listener
+
 // DEPENDENCIES **************************************
 import './css/styles.css';
 import Traveler from './Traveler';
 import Repository from './Repository';
+import { getData, postData } from './apiCalls';
+import dayjs from 'dayjs';
 // import './images/turing-logo.png'
 
 // GLOBAL DATA ***************************************
+let currentDate = dayjs();
 let destinationsRepo;
 let tripsRepo;
 let user;
 let travelersRepo;
-let currentDate;
 
 // FETCH DATA ****************************************
 function requestData(id) {
-  Promise.all([getData(`travelers/${id}`), getData('trips'), getData('destinations')])
+  Promise.all([getData(`travelers${id}`), getData('trips'), getData('destinations')])
     .then((data) => {
       setData(data);
+    })
+    .catch(error => {
+      alert('promise error');
     });
-}
-
-function getData(path) {
-  return fetch(`http://localhost:3001/api/v1/${path}`)
-    .then(response => {
-      return response.json();
-    })
-}
-
-function postData(path, request) {
-  const entry = {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(request)
-  };
-
-  return fetch(`http://localhost:3001/api/v1/${path}`, entry)
-    .then(response => {
-      return response.json();
-    })
-    .then(() => {
-      requestData(50);
-    })
 }
 
 function setData(data) {
@@ -47,33 +31,58 @@ function setData(data) {
   tripsRepo = new Repository(data[1].trips);
   user = new Traveler(data[0]);
   user.setTrips(tripsRepo);
-  console.log('user', user);
+
+  localStorage.setItem('traveler', JSON.stringify(data[0]));
+  localStorage.setItem('trips', JSON.stringify(data[1]));
+  localStorage.setItem('destinations', JSON.stringify(data[2]));
 
   displayUserInfo();
+  parseTripDates();
+  displayUserTrips();
   populateLocationChoices();
 }
 
 // DOM ELEMENTS **************************************
-const loginSection = document.querySelector('.login-section');
-const loginForm = document.forms[0];
+const loginForm = document.forms.login;
 const loginBtn = document.querySelector('.login-btn');
+
+const userSection = document.querySelector('.user-section');
+const userNameDisplay = document.querySelector('.user-name-display');
+const resetBtn = document.querySelector('.reset');
 
 const mainDisplay = document.querySelector('main');
 
-const requestTripForm = document.forms[1];
+const requestTripForm = document.forms.planTrip;
+const dateInput = document.querySelector('#date-input');
 const locationChoices = document.querySelector('.location-choices');
 const requestTripBtn = document.querySelector('.request-trip-btn');
 
 const tripsSection = document.querySelector('.user-trips-section');
 const yearlyExpenseDisplay = document.querySelector('.yearly-expense-display');
-const userNameDisplay = document.querySelector('.user-name-display');
-const userIdDisplay = document.querySelector('.user-id-display');
+
 
 // EVENT LISTENERS ***********************************
+window.addEventListener('load', checkForData);
 loginBtn.addEventListener('click', login);
+requestTripForm.addEventListener('change', validateTripRequest);
 requestTripBtn.addEventListener('click', requestTrip);
+resetBtn.addEventListener('click', function() {
+  localStorage.clear();
+  switchPages();
+});
 
 // EVENT HANDLERS ************************************
+function checkForData() {
+  if (localStorage.getItem('traveler')) {
+    switchPages();
+
+    const traveler = JSON.parse(localStorage.getItem('traveler'));
+    const trips = JSON.parse(localStorage.getItem('trips'));
+    const destinations = JSON.parse(localStorage.getItem('destinations'));
+    setData([traveler, trips, destinations]);
+  }
+}
+
 function login(event) {
   event.preventDefault();
 
@@ -82,35 +91,43 @@ function login(event) {
   const loginID = parseInt(loginCredentials[0].split('traveler')[1]);
 
   if (loginID && loginCredentials[1] === 'travel') {
-    requestData(loginID);
+    requestData(`/${loginID}`);
+    switchPages();
     loginForm.reset();
   } else {
     alert('Nope');
   }
 }
 
+function switchPages() {
+  loginForm.classList.toggle('hidden');
+  mainDisplay.classList.toggle('hidden');
+  userSection.classList.toggle('hidden');
+}
+
 function displayUserInfo() {
   userNameDisplay.innerText = user.name;
-  userIdDisplay.innerText = user.id;
+  yearlyExpenseDisplay.innerText = `$${user.calcYearExpenses(destinationsRepo, 2022)}`;
+}
 
+function parseTripDates() {
+  user.trips.forEach(trip => {
+    trip.date = dayjs(trip.date, "YYYY/MM/DD");
+  });
+}
+
+function displayUserTrips() {
   tripsSection.innerHTML = '';
   user.trips.forEach(trip => {
     tripsSection.innerHTML += `
     <article>
       <p>Destination: <span class="trip-destination-display">${destinationsRepo.filterData('id', trip.destinationID)[0].destination}</span></p>
+      <p>Date: <span class="trip-date-display">${dayjs(trip.date).format('dddd, MMM D, YYYY')}</span></p>
       <p>Duration: <span class="trip-duration-display">${trip.duration}</span> days</p>
       <p>Status: <span class="trip-status-display">${trip.status}</span></p>
-      <p>Date: <span class="trip-date-display">${trip.date}</span></p>
     </article>
     `;
   });
-
-  yearlyExpenseDisplay.innerText = `$${user.calcYearExpenses(destinationsRepo, 2022)}`;
- 
-  loginSection.classList.toggle('hidden');
-  mainDisplay.classList.toggle('hidden');
-
-  console.log('trips repo length', tripsRepo.data.length);
 }
 
 function populateLocationChoices() {
@@ -122,24 +139,34 @@ function populateLocationChoices() {
   })
 }
 
+function validateTripRequest() {
+  
+
+}
+
 function requestTrip(event) {
   event.preventDefault();
   
-  const requestedTrip = new FormData(requestTripForm);
-  const values = [...requestedTrip.values()];
-  
-  const requestedTripData = {
+  const tripRequest = new FormData(requestTripForm);
+  const values = [...tripRequest.values()];
+
+  const tripRequestData = {
     id: tripsRepo.data.length + 1,
     userID: user.id,
     destinationID: parseInt(values[2]),
     travelers: parseInt(values[1]),
-    date: '2022/12/30', // Grab date selection
+    date: dayjs(dateInput.value).format('YYYY/MM/D'), // Grab date selection
     duration: parseInt(values[0]),
     status: 'pending',
     suggestedActivities: []
   }
 
-  postData('trips', requestedTripData);
+  postData('trips', tripRequestData);
 
   requestTripForm.reset();
 }
+
+export { requestData };
+
+// switchPages();
+// requestData('/50');

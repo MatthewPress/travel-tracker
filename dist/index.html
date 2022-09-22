@@ -4,41 +4,47 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Travel Tracker</title>
+    <title>Pilgram | Travel Tracker</title>
   </head>
   <body>
     <!-- <img src="./images/turing-logo.png" alt="turing logo"> -->
-    <section class="login-section">
-      <form>
+    <header>
+      <h1>Pilgram</h1>
+      <form name="login">
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" required />
         <label for="password">Password:</label>
         <input type="password" id="password" name="password" />
-        <button type="submit" class="login-btn">Submit</button>
+        <button type="submit" class="login-btn">Login</button>
       </form>
-    </section>
-    <main class="hidden">
-      <section>
-        <form>
-          <label for="date-input">Date:</label>
-          <input type="date" id="date-input" required /><br />
-          <label for="duration-input">Duration:</label>
-          <input type="number" id="duration-input" name="duration-input" placeholder="0" min="0" required />
-          <label for="traveler-count-input">Number of Travelers:</label>
-          <input type="number" id="traveler-count-input" name="traveler-count-input" placeholder="0" min="0" required />
-          <label for="location-input">Destination:</label>
-          <select id="location-input" name="location-input" class="location-choices">
-          </select>
-          <button type="submit" class="request-trip-btn">Submit</button>
-        </form>
-      </section>
-      <section class="user-info-section">
+      <div class="user-section hidden">
         <p class="user-name-display"></p>
-        <p class="user-id-display"></p>
+        <button class="reset">Change User</button>
+      </div>
+    </header>
+    <main class="hidden">
+      <section class="plan-trip-section">
+        <h2>Plan A Trip</h2>
+        <article class="plan-trip-article">
+          <form name="planTrip">
+            <label for="date-input">Date</label>
+            <input type="date" id="date-input" required /><br />
+            <label for="duration-input">Duration</label>
+            <input type="number" id="duration-input" name="duration-input" placeholder="0" min="0" required /><br />
+            <label for="traveler-count-input">Number of Travelers</label>
+            <input type="number" id="traveler-count-input" name="traveler-count-input" placeholder="0" min="0" required /><br />
+            <label for="location-input">Destination</label>
+            <select id="location-input" name="location-input" class="location-choices">
+            </select><br />
+          </form>
+        </article>
+        <button type="submit" class="request-trip-btn">Submit</button>
       </section>
       <section class="user-trips-section">
       </section>
-      <p class="yearly-expense-display"></p>
+      <section>
+        <p class="yearly-expense-display"></p>
+      </section>
     </main>
     <script src="bundle.js"></script>
   </body>
