@@ -54,6 +54,7 @@ function setData(data) {
   displayUserInfo();
   populateLocationChoices();
 }
+
 // DOM ELEMENTS **************************************
 const tripsSection = document.querySelector('.trips-section');
 const yearlyExpenseDisplay = document.querySelector('.yearly-expense-display');
@@ -65,7 +66,6 @@ const requestTripBtn = document.querySelector('.request-trip-btn');
 
 // EVENT LISTENERS ***********************************
 requestTripBtn.addEventListener('click', requestTrip);
-
 
 // EVENT HANDLERS ************************************
 function displayUserInfo() {
