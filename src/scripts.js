@@ -1,8 +1,8 @@
 // DEPENDENCIES **************************************
 import './css/styles.css';
-// import './images/turing-logo.png'
 import Traveler from './Traveler';
 import Repository from './Repository';
+// import './images/turing-logo.png'
 
 // GLOBAL DATA ***************************************
 let destinationsRepo;
@@ -79,19 +79,14 @@ function login(event) {
 
   const loginData = new FormData(loginForm);
   const loginCredentials = [...loginData.values()];
-  console.log(loginCredentials);
+  const loginID = parseInt(loginCredentials[0].split('traveler')[1]);
 
-  if (validateLogin(loginCredentials[1])) {
-    const loginID = parseInt(loginCredentials[0]);
+  if (loginID && loginCredentials[1] === 'travel') {
     requestData(loginID);
     loginForm.reset();
   } else {
     alert('Nope');
   }
-}
-
-function validateLogin(passwordAttempt) {
-  return passwordAttempt === 'travel';
 }
 
 function displayUserInfo() {
@@ -115,7 +110,7 @@ function displayUserInfo() {
   loginSection.classList.toggle('hidden');
   mainDisplay.classList.toggle('hidden');
 
-  console.log('trips repo length', tripsRepo.length);
+  console.log('trips repo length', tripsRepo.data.length);
 }
 
 function populateLocationChoices() {
@@ -134,7 +129,7 @@ function requestTrip(event) {
   const values = [...requestedTrip.values()];
   
   const requestedTripData = {
-    id: tripsRepo.length,
+    id: tripsRepo.data.length + 1,
     userID: user.id,
     destinationID: parseInt(values[2]),
     travelers: parseInt(values[1]),
