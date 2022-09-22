@@ -26,6 +26,8 @@ class Traveler {
   }
 
   calcYearExpenses(repo, year) {
+    // Add: Should only calc for trips this year that are approved
+      // Call this.filterTrips and use that array along with a date filter
     return this.trips.reduce((acc, currTrip) => {
       if (currTrip.date >= `${year}/01/01` && currTrip.date <= `${year}/12/31`) {
         acc += this.calcTripCost(repo, currTrip);
