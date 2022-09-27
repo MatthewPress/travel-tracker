@@ -23,7 +23,7 @@ function requestData(id) {
       setData(data);
     })
     .catch(error => {
-      console.log('A method in setData probably fucked up');
+      displayErrorMessage();
     });
 }
 
@@ -50,6 +50,7 @@ const loginBtn = document.querySelector('.login-btn');
 const userSection = document.querySelector('.user-info-section');
 const userNameDisplay = document.querySelector('.user-name-display');
 const resetBtn = document.querySelector('.reset-btn');
+const errorMessageDisplay = document.querySelector('.error-message');
 const mainDisplay = document.querySelector('main');
 const destinationNameDisplay = document.querySelector('.destination-name-display');
 const destinationImg = document.querySelector('#destination-img');
@@ -67,7 +68,7 @@ const pendingTripsSection = document.querySelector('.pending');
 const yearlyExpenseDisplay = document.querySelector('.yearly-expense-display');
 
 // EVENT LISTENERS ***********************************
-// window.addEventListener('load', checkForData);
+window.addEventListener('load', checkForData);
 loginForm.addEventListener('input', verifyLogin);
 loginBtn.addEventListener('click', login);
 resetBtn.addEventListener('click', function() {
@@ -253,8 +254,12 @@ function requestTrip(event) {
   requestTripBtn.disabled = true;
 }
 
-export { requestData };
+function displayErrorMessage() {
+  errorMessageDisplay.classList.remove('hidden');
+}
+
+export { displayErrorMessage, requestData };
 
 // Used for accessiblity test
-switchPages();
-requestData('/50');
+// switchPages();
+// requestData('/50');

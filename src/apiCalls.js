@@ -1,4 +1,4 @@
-import { requestData } from './scripts';
+import { displayErrorMessage, requestData } from './scripts';
 
 function getData(path) {
   return fetch(`http://localhost:3001/api/v1/${path}`)
@@ -9,7 +9,7 @@ function getData(path) {
       return response.json();
     })
     .catch(error => {
-      alert('get error');
+      displayErrorMessage();
     });
 }
 
