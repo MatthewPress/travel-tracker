@@ -1,7 +1,3 @@
-// IOT run page as normal:
-  // Remove last two lines of code
-  // Uncomment window event listener
-
 // DEPENDENCIES **************************************
 import './css/styles.css';
 import Traveler from './Traveler';
@@ -68,7 +64,7 @@ const pendingTripsSection = document.querySelector('.pending');
 const yearlyExpenseDisplay = document.querySelector('.yearly-expense-display');
 
 // EVENT LISTENERS ***********************************
-// window.addEventListener('load', checkForData);
+window.addEventListener('load', checkForData);
 loginForm.addEventListener('input', verifyLogin);
 loginBtn.addEventListener('click', login);
 resetBtn.addEventListener('click', function() {
@@ -259,7 +255,3 @@ function displayErrorMessage() {
 }
 
 export { displayErrorMessage, requestData };
-
-// Used for accessiblity test
-switchPages();
-requestData('/50');
