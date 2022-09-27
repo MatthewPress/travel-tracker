@@ -1,44 +1,163 @@
 /* VARIABLES ********************************************* */
 :root {
-  --green: #002A32;
-  --apricot: #FFC6AC ;
+  --white: #FFFFFF;
+  --light-white: rgba(255, 255, 255, 0.3);
+  --black: #000000;
+  --primary-color: #212121;
+  --light-primary-color: #858585;
+  --secondary-color: #0B6030;  /* #16CB64; */ /* #3664E4; */
+  --light-secondary-color: #6D94FF;
+  --primary-font: sans-serif;
+  --secondary-font: 'UnifrakturCook', cursive;
+  --shadow: 5px 5px 7px#000000;
 }
 
-/* BODY ************************************************* */
-body {
-  background: var(--apricot);
-  color: var(--apricot);
-  text-shadow: 3px 3px 5px #000000;
-  margin: 0px;
-}
-
+/* TEXT ************************************************* */
 label,
 p,
 button {
   font-size: 1.2em;
 }
 
+p {
+  margin: 5px;
+}
+/* SHARED LAYOUTS **************************************** */
+header,
+section,
+form[name="login"],
+.user-section,
+.form-field {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+header,
+.form-field,
+.user-section {
+  justify-content: space-between;
+}
+
+/* BODY ************************************************* */
+body {
+  background: rgb(54,100,228);
+  background: linear-gradient(180deg, rgba(54,100,228,1) 10%, rgba(255,255,255,1) 100%);
+  background-repeat: no-repeat;
+  color: var(--white);
+  font-family: var(--primary-font);
+  margin: 0px;
+}
+
+/* HEADER ****************************************** */
+header {
+  background: var(--primary-color);
+  font-family: var(--secondary-font);
+  color: var(--white);
+  padding: 10px;
+}
+
+h1 {
+  font-family: 'UnifrakturCook', cursive;
+  margin: 10px;
+}
+
+/* MAIN ******************************************* */
+main {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+  padding: 20px;
+}
+
+section {
+  background: var(--light-white);
+  min-width: 320px;
+  padding: 10px;
+  border-radius: 5px;
+  /* box-shadow: var(--shadow); */
+  filter: drop-shadow(0 0 0.5rem var(--black));
+}
+
+img {
+  width: 250px;
+  height: 200px;
+  margin: 5px 25px;
+  border-radius: 5px;
+}
+
+/* PLAN TRIP SECTION ****************************** */
+.trip-card {
+  background: var(--secondary-color);
+  color: var(--white);
+  height: 375px;
+  width: 300px;
+  padding: 5px;
+  border: 2px solid var(--black);
+  border-radius: 5px;
+  margin: 5px;
+}
+
+h3 {
+  margin: 5px 0px 5px 15px;
+}
+
+.trip-card p {
+  text-align: right;
+  margin-right: 15px;
+}
+
+.plan-trip-section {
+  grid-column: span 2;
+  flex-direction: column;
+}
+
+h2 {
+  align-self: flex-start;
+  margin-left: 20px;
+}
+
+.request-trip-btn {
+  align-self: flex-end;
+}
+
+/* USER'S TRIP ***************************************** */
+.user-trips-section {
+  /* flex-direction: column; */
+  max-height: 500px;
+  overflow-y: scroll;
+}
+
+.user-trips-section h2 {
+  flex-grow: 2;
+}
+.user-trips-display {
+  background: var(--light-white);
+  padding: 5px;
+}
+
+.yearly-expense-section {
+  grid-column: 3;
+}
+/* INPUTS & LABELS ************************************* */
+.form-field,
+button {
+  color: var(--white);
+  background: var(--secondary-color);
+  /* filter: drop-shadow(0 0 0.75rem var(--black)); */
+  box-shadow: var(--shadow);
+  margin: 15px;
+}
+
 button,
+.form-field,
 input,
 select {
-  font-family: serif;
+  font-family: var(--primary-font);
   padding: 5px;
-  border: 0px;
+  border: 2px solid var(--black);
   border-radius: 5px;
-  box-shadow: 5px 5px 4px#000000;
-  margin: 5px;
-}
-
-label {
-  float: left;
-  clear: left;
-  width: 175px;
-  margin: 5px;
-}
-
-button {
-  color: var(--green);
-  background: var(--apricot);
   -webkit-transform: perspective(1px) translateZ(0);
   transform: perspective(1px) translateZ(0);
   -webkit-transition-duration: 0.3s;
@@ -47,57 +166,47 @@ button {
   transition-property: transform;
 }
 
-button:hover, 
-button:focus {
-  cursor: pointer;
+button:enabled:hover,
+.form-field:hover {
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
 }
 
-/* HEADER ****************************************** */
-header {
-  background: var(--green);
-  color: var(--apricot);
-  padding: 10px;
+button:enabled:hover,
+select {
+  cursor: pointer;
 }
 
-h1 {
-  margin: 10px;
+button:disabled {
+  background: var(--light-white);
+  color: lightgrey;
 }
 
-/* SHARED LAYOUTS ********************************** */
-header,
-.user-section,
-.user-trips-section {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
+input:invalid {
+  border: 3px solid red;
 }
 
-/* MAIN ******************************************* */
-main {
-  padding: 10px;
-}
-
-section {
-  padding: 10px 30px;
-  margin: 10px;
-  background: var(--green);
-}
-
-/* PLAN TRIP SECTION ****************************** */
-.plan-trip-article {
-  display: flex;
-  flex-direction: row;
-}
-
-article {
-  /* color: var(--green);
-  background: var(--soft-green); */
+input:valid {
+  border: 3px solid gold;
 }
 
 /* GENERAL ********************************************** */
 .hidden {
-  display: none;
+  display: none !important;
+}
+
+/* EXTRA SMALL SCREEN *********************************** */
+@media screen and (max-width: 1000px) {
+  main {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  label,
+  p,
+  button {
+    font-size: 0.9em;
+  }
 }
