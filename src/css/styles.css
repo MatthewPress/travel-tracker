@@ -179,6 +179,7 @@ select {
 button:disabled {
   background: var(--light-white);
   color: lightgrey;
+  cursor: not-allowed;
 }
 
 input:invalid {
