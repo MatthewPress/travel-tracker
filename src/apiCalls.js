@@ -13,7 +13,7 @@ function getData(path) {
     });
 }
 
-function postData(path, request) {
+function postData(path, request, userID) {
   const entry = {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -28,7 +28,7 @@ function postData(path, request) {
       return response.json();
     })
     .then(() => {
-      requestData(50);
+      requestData(`/${userID}`);
     })
     .catch(error => {
       alert('post error');
