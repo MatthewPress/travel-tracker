@@ -3,12 +3,12 @@ class Repository {
     this.data = data;
   }
 
-  findEntry(property, id) {
-    return this.data.find(entry => entry[property] === id);
+  findEntry(property, value) {
+    return this.data.find(entry => entry[property] === value);
   }
 
-  filterEntries(property, id) {
-    return this.data.filter(entry => entry[property] === id);
+  filterEntries(property, value) {
+    return this.data.filter(entry => entry[property] === value);
   }
 }
 
