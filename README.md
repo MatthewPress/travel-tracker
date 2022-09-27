@@ -51,6 +51,8 @@ This project was created for the Turing School of Software and Design's Module 2
 * [![JavaScript][JavaScript.com]][JavaScript-url]
 * [![CSS][w3.org/Style/CSS/Overview.en.html]][CSS-url]
 * [![HTML5][w3.org]][HTML-url]
+* [![Mocha][mochajs.org]][Mocha-url]
+* [![Chai][chaijs.com]][Chai-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -63,6 +65,8 @@ This project was created for the Turing School of Software and Design's Module 2
 ## Roadmap
 
 - [ ] Add a way for an Admin to login, view information about travelers, and modify their trips or the destinations the travelers can choose.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Notes
 
@@ -79,19 +83,23 @@ This project was created for the Turing School of Software and Design's Module 2
 
 ## Contact
 
-Matthew Press - [@MatthewPres2](https://twitter.com/MatthewPres2) - press.matt14@gmail.com
+Matthew Press - press.matt14@gmail.com - [![LinkedIn][linkedin-shield]][linkedin-url]
 
-Project Link: [https://github.com/MatthewPress/tic-tac-toe](https://github.com/MatthewPress/tic-tac-toe)
+Project Link: [https://github.com/MatthewPress/travel-tracker](https://github.com/MatthewPress/travel-tracker)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- MARKDOWN LINKS & IMAGES -->
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/matthew-press-813961246/
-[product-demo]: assets/images/demo.gif
-[JavaScript.com]: https://img.shields.io/badge/-JavaScript-yellow
+[product-demo]: ./src/images/demo.gif
+[JavaScript.com]: https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black
 [JavaScript-url]: https://www.javascript.com/
-[w3.org/Style/CSS/Overview.en.html]: https://img.shields.io/badge/-CSS-blue
+[w3.org/Style/CSS/Overview.en.html]: https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white
 [CSS-url]: https://www.w3.org/Style/CSS/Overview.en.html
-[w3.org]: https://img.shields.io/badge/-HTML5-red
+[w3.org]: https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white
 [HTML-url]: https://www.w3.org/
+[mochajs.org]: https://img.shields.io/badge/Mocha-8D6748?style=for-the-badge&logo=Mocha&logoColor=white
+[Mocha-url]: https://mochajs.org/
+[chaijs.com]: https://img.shields.io/badge/Chai-A30701?style=for-the-badge&logo=chai&logoColor=white
+[Chai-url]: https://www.chaijs.com/
