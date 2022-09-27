@@ -3,20 +3,12 @@ class Repository {
     this.data = data;
   }
 
-  filterData(property, id) {
+  findEntry(property, id) {
+    return this.data.find(entry => entry[property] === id);
+  }
+
+  filterEntries(property, id) {
     return this.data.filter(entry => entry[property] === id);
-  }
-
-  addData(entry) {
-    this.data.push(entry);
-  }
-
-  removeData(id) {
-    this.data.forEach((entry, currIndex) => {
-      if (entry.id === id) {
-        this.data.splice(currIndex , 1);
-      }
-    });
   }
 }
 
