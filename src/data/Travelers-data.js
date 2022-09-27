@@ -10,7 +10,7 @@ const travelersData = [
     travelerType: "thrill-seeker",
   }, 
   {
-    id: 3,
+    id: 999,
     name: "Sibby Dawidowitsch",
     travelerType: "shopper",
   }

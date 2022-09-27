@@ -25,12 +25,17 @@ describe('Traveler', () => {
       });
   });
 
-  it('should be able to find its trips', () => {
+  it('should be able to find and create a property for its trips', () => {
     user.setTrips(tripsRepo);
     const userTrips = [tripsData[0], tripsData[1], tripsData[2]]
 
     expect(user.trips).to.deep.equal(userTrips);
-    // test to see what happens when no trips are found (use a user with a crazy id)
   });
 
+  it('should not create a property for trips if no trips are found', () => {
+    const user2 = new Traveler(travelersData[2]);
+    user2.setTrips(tripsRepo);
+
+    expect(user2.trips).to.deep.equal([]);
+  });
 });
