@@ -29,12 +29,4 @@ describe('Repository', () => {
     expect(travelersRepo.filterData(1)[0]).to.deep.equal(travelersData[0]);
   });
 
-  it.skip('should be able to add a user', () => {
-
-  });
-
-  it.skip('should be able to delete a user', () => {
-
-  });
-
 });
