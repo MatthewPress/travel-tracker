@@ -7,33 +7,12 @@ class Traveler {
   }
 
   setTrips(repo) {
-    if (repo.filterData('userID', this.id)) {
-      repo.filterData('userID', this.id)
+    if (repo.filterEntries('userID', this.id)) {
+      repo.filterEntries('userID', this.id)
         .forEach(trip => {
           this.trips.push(trip);
         });
     } 
-  }
-
-  filterTrips(property, criteria) {
-    return this.trips.filter(trip => trip[property] === criteria);
-  }
-
-  calcTripCost(repo, trip) {
-    const location = repo.filterData(trip.destinationID)[0];
-    let total = ((trip.travelers * location.estimatedFlightCostPerPerson) + (trip.duration * location.estimatedLodgingCostPerDay) * 1.1);
-    return total;
-  }
-
-  calcYearExpenses(repo, year) {
-    // Add: Should only calc for trips this year that are approved
-      // Call this.filterTrips and use that array along with a date filter
-    return this.trips.reduce((acc, currTrip) => {
-      if (currTrip.date >= `${year}/01/01` && currTrip.date <= `${year}/12/31`) {
-        acc += this.calcTripCost(repo, currTrip);
-      }
-      return acc;
-    }, 0);
   }
 }
 
