@@ -4,12 +4,11 @@
   --light-white: rgba(255, 255, 255, 0.3);
   --black: #000000;
   --primary-color: #212121;
-  --light-primary-color: #858585;
-  --secondary-color: #0B6030;  /* #16CB64; */ /* #3664E4; */
-  --light-secondary-color: #6D94FF;
+  --secondary-color: #0B6030;
   --primary-font: sans-serif;
-  --secondary-font: 'UnifrakturCook', cursive;
+  --secondary-font: cursive, sans-serif;
   --shadow: 5px 5px 7px#000000;
+  --radius: 5px;
 }
 
 /* TEXT ************************************************* */
@@ -22,11 +21,12 @@ button {
 p {
   margin: 5px;
 }
+
 /* SHARED LAYOUTS **************************************** */
 header,
 section,
 form[name="login"],
-.user-section,
+.user-info-section,
 .form-field {
   display: flex;
   justify-content: center;
@@ -36,7 +36,7 @@ form[name="login"],
 
 header,
 .form-field,
-.user-section {
+.user-info-section {
   justify-content: space-between;
 }
 
@@ -59,7 +59,6 @@ header {
 }
 
 h1 {
-  font-family: 'UnifrakturCook', cursive;
   margin: 10px;
 }
 
@@ -75,19 +74,11 @@ section {
   background: var(--light-white);
   min-width: 320px;
   padding: 10px;
-  border-radius: 5px;
-  /* box-shadow: var(--shadow); */
+  border-radius: var(--radius);
   filter: drop-shadow(0 0 0.5rem var(--black));
 }
 
-img {
-  width: 250px;
-  height: 200px;
-  margin: 5px 25px;
-  border-radius: 5px;
-}
-
-/* PLAN TRIP SECTION ****************************** */
+/* Trip Card ****************************** */
 .trip-card {
   background: var(--secondary-color);
   color: var(--white);
@@ -95,7 +86,7 @@ img {
   width: 300px;
   padding: 5px;
   border: 2px solid var(--black);
-  border-radius: 5px;
+  border-radius: var(--radius);
   margin: 5px;
 }
 
@@ -103,11 +94,19 @@ h3 {
   margin: 5px 0px 5px 15px;
 }
 
+img {
+  width: 250px;
+  height: 200px;
+  margin: 5px 25px;
+  border-radius: var(--radius);
+}
+
 .trip-card p {
   text-align: right;
   margin-right: 15px;
 }
 
+/* PLAN TRIP SECTION **************************** */
 .plan-trip-section {
   grid-column: span 2;
   flex-direction: column;
@@ -122,9 +121,8 @@ h2 {
   align-self: flex-end;
 }
 
-/* USER'S TRIP ***************************************** */
+/* USER'S TRIPS ***************************************** */
 .user-trips-section {
-  /* flex-direction: column; */
   max-height: 500px;
   overflow-y: scroll;
 }
@@ -140,12 +138,12 @@ h2 {
 .yearly-expense-section {
   grid-column: 3;
 }
+
 /* INPUTS & LABELS ************************************* */
 .form-field,
 button {
-  color: var(--white);
   background: var(--secondary-color);
-  /* filter: drop-shadow(0 0 0.75rem var(--black)); */
+  color: var(--white);
   box-shadow: var(--shadow);
   margin: 15px;
 }
@@ -157,7 +155,7 @@ select {
   font-family: var(--primary-font);
   padding: 5px;
   border: 2px solid var(--black);
-  border-radius: 5px;
+  border-radius: var(--radius);;
   -webkit-transform: perspective(1px) translateZ(0);
   transform: perspective(1px) translateZ(0);
   -webkit-transition-duration: 0.3s;
@@ -167,7 +165,8 @@ select {
 }
 
 button:enabled:hover,
-.form-field:hover {
+select:hover,
+input:hover {
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
 }
@@ -188,6 +187,10 @@ input:invalid {
 
 input:valid {
   border: 3px solid gold;
+}
+
+label {
+  margin-right: 15px;
 }
 
 /* GENERAL ********************************************** */
