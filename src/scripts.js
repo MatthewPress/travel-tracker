@@ -68,7 +68,7 @@ const pendingTripsSection = document.querySelector('.pending');
 const yearlyExpenseDisplay = document.querySelector('.yearly-expense-display');
 
 // EVENT LISTENERS ***********************************
-window.addEventListener('load', checkForData);
+// window.addEventListener('load', checkForData);
 loginForm.addEventListener('input', verifyLogin);
 loginBtn.addEventListener('click', login);
 resetBtn.addEventListener('click', function() {
@@ -261,5 +261,5 @@ function displayErrorMessage() {
 export { displayErrorMessage, requestData };
 
 // Used for accessiblity test
-// switchPages();
-// requestData('/50');
+switchPages();
+requestData('/50');
