@@ -9,7 +9,7 @@
   <body>
     <header>
       <h1>Pilgram</h1>
-      <form name="login">
+      <form id="login" name="login">
         <div class="form-field">
           <label for="username">Username:</label>
           <input type="text" id="username" name="username" required />
@@ -37,7 +37,7 @@
       <section class="plan-trip-section">
         <h2>Plan A Trip</h2>
         <article class="plan-trip-article">
-          <form name="planTrip">
+          <form id="planTrip" name="planTrip">
             <div class="form-field">
               <label for="location-input">Destination</label>
               <select id="location-input" name="location-input" class="location-choices">
@@ -59,7 +59,7 @@
         </article>
         <p>Estimated Cost: $<span class="estimated-cost-display">0</span></p>
         <p>* All cost estimates include Pilgram's 10% fee</p>
-        <button type="submit" class="request-trip-btn" disabled>Request Trip</button>
+        <button type="submit" form="planTrip" class="request-trip-btn" disabled>Request Trip</button>
       </section>
       <section class="user-trips-section">
         <h2>Past Trips</h2>

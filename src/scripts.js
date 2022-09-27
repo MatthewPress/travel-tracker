@@ -1,4 +1,6 @@
-// Remove last two lines of code and uncomment window event listener
+// IOT run page as normal:
+  // Remove last two lines of code
+  // Uncomment window event listener
 
 // DEPENDENCIES **************************************
 import './css/styles.css';
@@ -45,41 +47,35 @@ function setData(data) {
 // DOM ELEMENTS **************************************
 const loginForm = document.forms.login;
 const loginBtn = document.querySelector('.login-btn');
-
-const userSection = document.querySelector('.user-section');
+const userSection = document.querySelector('.user-info-section');
 const userNameDisplay = document.querySelector('.user-name-display');
-const resetBtn = document.querySelector('.reset');
-
+const resetBtn = document.querySelector('.reset-btn');
 const mainDisplay = document.querySelector('main');
-
 const destinationNameDisplay = document.querySelector('.destination-name-display');
 const destinationImg = document.querySelector('#destination-img');
 const destinationLodgingDisplay = document.querySelector('.destination-lodging-display');
 const destinationFlightDisplay = document.querySelector('.destination-flight-display');
-
 const requestTripForm = document.forms.planTrip;
 const dateInput = document.querySelector('#date-input');
 const locationChoices = document.querySelector('.location-choices');
 const estimatedCostDisplay = document.querySelector('.estimated-cost-display');
 const requestTripBtn = document.querySelector('.request-trip-btn');
-
 const userTripsDisplay = document.querySelectorAll('.user-trips-display');
 const pastTripsSection = document.querySelector('.past');
 const futureTripsSection = document.querySelector('.future');
 const pendingTripsSection = document.querySelector('.pending');
-
 const yearlyExpenseDisplay = document.querySelector('.yearly-expense-display');
 
 // EVENT LISTENERS ***********************************
 // window.addEventListener('load', checkForData);
 loginForm.addEventListener('input', verifyLogin);
 loginBtn.addEventListener('click', login);
-requestTripForm.addEventListener('change', validateTripRequest);
-requestTripBtn.addEventListener('click', requestTrip);
 resetBtn.addEventListener('click', function() {
   localStorage.clear();
   switchPages();
 });
+requestTripForm.addEventListener('change', validateTripRequest);
+requestTripBtn.addEventListener('click', requestTrip);
 
 // EVENT HANDLERS ************************************
 function checkForData() {
@@ -259,5 +255,6 @@ function requestTrip(event) {
 
 export { requestData };
 
+// Used for accessiblity test
 switchPages();
 requestData('/50');
