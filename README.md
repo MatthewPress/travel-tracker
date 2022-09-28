@@ -14,7 +14,7 @@
     <br />
     <a href="https://github.com/MatthewPress/travel-tracker"><strong>Explore the docs »</strong></a>
     <br />
-    <a href="https://github.com/github_username/repo_name"><strong>Visit the Deployed Site »</strong></a>
+    <a href="https://matthewpress.github.io/travel-tracker/"><strong>Visit the Deployed Site »</strong></a>
   </p>
 </div>
 
@@ -58,8 +58,10 @@ The project specs can be found [here](https://frontend.turing.edu/projects/trave
 
 ## Setup
 
-- Option 1: Visit the deployed site
-- Option 2: 
+- Visit [this repo](https://github.com/MatthewPress/travel-tracker-api) and `clone` it down to your local machine
+- Run `npm install`
+- Run `npm run start`
+- Visit the [deployed site](https://matthewpress.github.io/travel-tracker/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
