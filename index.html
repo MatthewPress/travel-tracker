@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pilgram | Travel Tracker</title>
+  </head>
+  <body>
+    <header>
+      <h1>Pilgram</h1>
+      <form id="login" name="login">
+        <div class="form-field">
+          <label for="username">Username:</label>
+          <input type="text" id="username" name="username" required />
+        </div>
+        <div class="form-field">
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" required />
+        </div>
+        <button type="submit" class="login-btn" disabled>Login</button>
+      </form>
+      <div class="user-info-section hidden">
+        <p>Welcome, <span class="user-name-display"></span></p>
+        <button class="reset-btn">Log Out</button>
+      </div>
+    </header>
+    <p class="error-message hidden">Sorry, this webpage is not currently usable.</p>
+    <main class="hidden">
+      <section class="destinations-section">
+        <article class="trip-card">
+          <h3 class="destination-name-display">NAME</h3>
+          <img id="destination-img" src="" alt="" />
+          <p>Lodging / Day: $<span class="destination-lodging-display"></span></p>
+          <p>Flight / Person: $<span class="destination-flight-display"></span></p>
+        </article>
+      </section>
+      <section class="plan-trip-section">
+        <h2>Plan A Trip</h2>
+        <article class="plan-trip-article">
+          <form id="planTrip" name="planTrip">
+            <div class="form-field">
+              <label for="location-input">Destination</label>
+              <select id="location-input" name="location-input" class="location-choices">
+              </select>
+            </div>
+            <div class="form-field">
+              <label for="date-input">Start Date</label>
+              <input type="date" id="date-input" required />
+            </div>
+            <div class="form-field">
+              <label for="duration-input"># Days</label>
+              <input type="number" id="duration-input" name="duration-input" placeholder="0" min="0" required />
+            </div>
+            <div class="form-field">
+              <label for="traveler-count-input"># Travelers</label>
+              <input type="number" id="traveler-count-input" name="traveler-count-input" placeholder="0" min="0" required />
+            </div>
+          </form>
+        </article>
+        <p>Estimated Cost: $<span class="estimated-cost-display">0</span></p>
+        <p>* All cost estimates include Pilgram's 10% fee</p>
+        <button type="submit" form="planTrip" class="request-trip-btn" disabled>Request Trip</button>
+      </section>
+      <section class="user-trips-section">
+        <h2>Past Trips</h2>
+        <div class="user-trips-display past">
+        </div>
+      </section>
+      <section class="user-trips-section">
+        <h2>Future Trips</h2>
+        <div class="user-trips-display future">
+        </div>
+      </section>
+      <section class="user-trips-section">
+        <h2>Pending Trips</h2>
+        <div class="user-trips-display pending">
+        </div>
+      </section>
+      <section class="yearly-expense-section">
+        <p>Yearly Expenses: $<span class="yearly-expense-display"></span></p>
+      </section>
+    </main>
+    <script src="bundle.js"></script>
+  </body>
+</html>
