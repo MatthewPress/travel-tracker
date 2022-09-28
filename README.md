@@ -38,7 +38,7 @@
 
 ## About The Project
 
-[![Pilgram Demo][product-demo]](./src/images/demo.gif)
+[![Pilgram Demo][product-demo]](./src/images/pilgram-demo.gif)
 
 This is a web application built for a travel agency and its customers to book trips and track their past, future, and pending trips. It was created for the Turing School of Software and Design's Module 2 final solo project. The overall goal was to demonstrate what we have learned after 3 months in the program.
 
@@ -68,6 +68,8 @@ The project specs can be found [here](https://frontend.turing.edu/projects/trave
 Traveler login information
 - Username: traveler50 (or any number between 1-50)
 - Password: travel
+
+[![Book Trip Demo][book-trip-demo]](./src/images/book-trip-demo.gif)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -107,12 +109,8 @@ Matthew Press | [![LinkedIn][linkedin-shield]][linkedin-url] | [![GMail][gmail-s
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- MARKDOWN LINKS & IMAGES -->
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/matthew-press-813961246/
-[gmail-shield]: https://img.shields.io/badge/Gmail-EA4335?style=for-the-badge&logo=gmail&logoColor=white
-[gmail-url]: mailto:press.matt14@gmail.com
-
-[product-demo]: ./src/images/demo.gif
+[product-demo]: ./src/images/pilgram-demo.gif
+[book-trip-demo]: ./src/images/book-trip-demo.gif
 
 [JavaScript-shield]: https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black
 [CSS-shield]: https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white
@@ -121,3 +119,8 @@ Matthew Press | [![LinkedIn][linkedin-shield]][linkedin-url] | [![GMail][gmail-s
 [Chai-shield]: https://img.shields.io/badge/Chai-A30701?style=for-the-badge&logo=chai&logoColor=white
 [NPM-shield]: https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white
 [DayJS-shield]: https://img.shields.io/badge/-DayJS-green?style=for-the-badge&logo=DayJS&logoColor=white
+
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-url]: https://linkedin.com/in/matthew-press-813961246/
+[gmail-shield]: https://img.shields.io/badge/Gmail-EA4335?style=for-the-badge&logo=gmail&logoColor=white
+[gmail-url]: mailto:press.matt14@gmail.com
